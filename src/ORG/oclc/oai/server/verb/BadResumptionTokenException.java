@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.verb;
+package org.oclc.oai.server.verb;
 
 /**
  * An OAI badResumptionTokenException

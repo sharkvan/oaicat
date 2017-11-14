@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.catalog;
+package org.oclc.oai.server.catalog;
 
 // import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Vector;
 
-import ORG.oclc.oai.server.crosswalk.Crosswalk;
-import ORG.oclc.oai.server.crosswalk.CrosswalkItem;
-import ORG.oclc.oai.server.crosswalk.Crosswalks;
-import ORG.oclc.oai.server.verb.CannotDisseminateFormatException;
-import ORG.oclc.oai.server.verb.NoMetadataFormatsException;
-import ORG.oclc.oai.util.OAIUtil;
+import org.oclc.oai.server.crosswalk.Crosswalk;
+import org.oclc.oai.server.crosswalk.CrosswalkItem;
+import org.oclc.oai.server.crosswalk.Crosswalks;
+import org.oclc.oai.server.verb.CannotDisseminateFormatException;
+import org.oclc.oai.server.verb.NoMetadataFormatsException;
+import org.oclc.oai.util.OAIUtil;
 
 /**
  * RecordFactory is responsible for pulling various pieces of information from native records

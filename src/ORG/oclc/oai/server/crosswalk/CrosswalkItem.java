@@ -8,12 +8,12 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.crosswalk;
+package org.oclc.oai.server.crosswalk;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import ORG.oclc.oai.server.verb.OAIInternalServerError;
+import org.oclc.oai.server.verb.OAIInternalServerError;
 
 public class CrosswalkItem {
     private String contentType = null;

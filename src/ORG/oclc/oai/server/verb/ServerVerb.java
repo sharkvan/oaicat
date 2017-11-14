@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.verb;
+package org.oclc.oai.server.verb;
 
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -33,8 +33,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import ORG.oclc.oai.server.catalog.AbstractCatalog;
-import ORG.oclc.oai.util.OAIUtil;
+import org.oclc.oai.server.catalog.AbstractCatalog;
+
+import org.oclc.oai.util.OAIUtil;
 //import javax.servlet.http.HttpUtils;
 
 /**

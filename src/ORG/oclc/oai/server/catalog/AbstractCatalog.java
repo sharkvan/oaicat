@@ -9,7 +9,7 @@
  * limitations under the License.
  */
 
-package ORG.oclc.oai.server.catalog;
+package org.oclc.oai.server.catalog;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -23,16 +23,16 @@ import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
-import ORG.oclc.oai.server.crosswalk.Crosswalks;
-import ORG.oclc.oai.server.verb.BadArgumentException;
-import ORG.oclc.oai.server.verb.BadResumptionTokenException;
-import ORG.oclc.oai.server.verb.CannotDisseminateFormatException;
-import ORG.oclc.oai.server.verb.IdDoesNotExistException;
-import ORG.oclc.oai.server.verb.NoItemsMatchException;
-import ORG.oclc.oai.server.verb.NoMetadataFormatsException;
-import ORG.oclc.oai.server.verb.NoSetHierarchyException;
-import ORG.oclc.oai.server.verb.OAIInternalServerError;
-import ORG.oclc.oai.server.verb.ServerVerb;
+import org.oclc.oai.server.crosswalk.Crosswalks;
+import org.oclc.oai.server.verb.BadArgumentException;
+import org.oclc.oai.server.verb.BadResumptionTokenException;
+import org.oclc.oai.server.verb.CannotDisseminateFormatException;
+import org.oclc.oai.server.verb.IdDoesNotExistException;
+import org.oclc.oai.server.verb.NoItemsMatchException;
+import org.oclc.oai.server.verb.NoMetadataFormatsException;
+import org.oclc.oai.server.verb.NoSetHierarchyException;
+import org.oclc.oai.server.verb.OAIInternalServerError;
+import org.oclc.oai.server.verb.ServerVerb;
 
 /**
  * AbstractCatalog is the generic interface between OAICat and any arbitrary

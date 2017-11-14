@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server;
+package org.oclc.oai.server;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,13 +37,13 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import ORG.oclc.oai.server.catalog.AbstractCatalog;
-import ORG.oclc.oai.server.verb.BadVerb;
-import ORG.oclc.oai.server.verb.OAIInternalServerError;
-import ORG.oclc.oai.server.verb.ServerVerb;
+import org.oclc.oai.server.catalog.AbstractCatalog;
+import org.oclc.oai.server.verb.BadVerb;
+import org.oclc.oai.server.verb.OAIInternalServerError;
+import org.oclc.oai.server.verb.ServerVerb;
 
 /**
  * OAIHandler is the primary Servlet for OAICat.
@@ -75,27 +75,19 @@ public class OAIHandler extends HttpServlet {
 //        BasicConfigurator.configure();
 //    }
     
-    private Log log = LogFactory.getLog(OAIHandler.class);
+    private Logger log = LoggerFactory.getLogger(OAIHandler.class);
     
     /**
      * Get the VERSION number
      */
     public static String getVERSION() { return VERSION; }
-    
+   
     /**
-     * init is called one time when the Servlet is loaded. This is the
-     * place where one-time initialization is done. Specifically, we
-     * load the properties file for this application, and create the
-     * AbstractCatalog object for subsequent use.
      *
-     * @param config servlet configuration information
-     * @exception ServletException there was a problem with initialization
+     *
      */
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        
+     public Properties getProperties(ServletConfig config) throws ServletException {
         try {
-            HashMap attributes = null;
             ServletContext context = getServletContext();
             Properties properties = (Properties) context.getAttribute(PROPERTIES_SERVLET_CONTEXT_ATTRIBUTE);
             if (properties == null) {
@@ -115,20 +107,15 @@ public class OAIHandler extends HttpServlet {
                     log.debug("file was found: Load the properties");
                     properties = new Properties();
                     properties.load(in);
-                    attributes = getAttributes(properties);
-                    if (debug) System.out.println("OAIHandler.init: fileName=" + fileName);
+                    log.debug("OAIHandler.init: fileName=", fileName);
+                    return properties;
                 }
             } else {
                 log.debug("Load context properties");
-                attributes = getAttributes(properties);
+                return properties;
             }
-
-            log.debug("Store global properties");
-            attributesMap.put("global", attributes);
+            return null;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            throw new ServletException(e.getMessage());
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
             throw new ServletException(e.getMessage());
         } catch (IllegalArgumentException e) {
@@ -142,6 +129,34 @@ public class OAIHandler extends HttpServlet {
             throw new ServletException(e.getMessage());
         }
     }
+
+    /**
+     * init is called one time when the Servlet is loaded. This is the
+     * place where one-time initialization is done. Specifically, we
+     * load the properties file for this application, and create the
+     * AbstractCatalog object for subsequent use.
+     *
+     * @param config servlet configuration information
+     * @exception ServletException there was a problem with initialization
+     */
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        
+        try{
+	        HashMap attributes = null;
+	        Properties properties = getProperties(config);
+	        if (properties != null) {
+	           log.debug("Load context properties");
+	           attributes = getAttributes(properties);
+	           log.debug("Store global properties");
+	           attributesMap.put("global", attributes);
+	        }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            throw new ServletException(e.getMessage());
+        }
+        
+    }
     
     public HashMap getAttributes(Properties properties)
     throws Throwable {
@@ -154,7 +169,7 @@ public class OAIHandler extends HttpServlet {
         attributes.put("OAIHandler.properties", properties);
 //        String temp = properties.getProperty("OAIHandler.debug");
 //        if ("true".equals(temp)) debug = true;
-        String missingVerbClassName = properties.getProperty("OAIHandler.missingVerbClassName", "ORG.oclc.oai.server.verb.BadVerb");
+        String missingVerbClassName = properties.getProperty("OAIHandler.missingVerbClassName", "org.oclc.oai.server.verb.BadVerb");
         Class missingVerbClass = Class.forName(missingVerbClassName);
         attributes.put("OAIHandler.missingVerbClass", missingVerbClass);
         if (!"true".equals(properties.getProperty("OAIHandler.serviceUnavailable"))) {

@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.verb.extension;
+package org.oclc.oai.server.verb.extension;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,14 +20,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 
-import ORG.oclc.oai.server.catalog.AbstractCatalog;
-import ORG.oclc.oai.server.crosswalk.Crosswalks;
-import ORG.oclc.oai.server.verb.BadArgumentException;
-import ORG.oclc.oai.server.verb.BadVerb;
-import ORG.oclc.oai.server.verb.CannotDisseminateFormatException;
-import ORG.oclc.oai.server.verb.IdDoesNotExistException;
-import ORG.oclc.oai.server.verb.OAIInternalServerError;
-import ORG.oclc.oai.server.verb.ServerVerb;
+import org.oclc.oai.server.catalog.AbstractCatalog;
+
+import org.oclc.oai.server.crosswalk.Crosswalks;
+import org.oclc.oai.server.verb.BadArgumentException;
+import org.oclc.oai.server.verb.BadVerb;
+import org.oclc.oai.server.verb.CannotDisseminateFormatException;
+import org.oclc.oai.server.verb.IdDoesNotExistException;
+import org.oclc.oai.server.verb.OAIInternalServerError;
+import org.oclc.oai.server.verb.ServerVerb;
 
 /**
  * This class represents a GetMetadata response on either the server or

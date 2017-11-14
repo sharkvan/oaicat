@@ -8,7 +8,7 @@
  * or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ORG.oclc.oai.server.verb;
+package org.oclc.oai.server.verb;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,10 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 
-import ORG.oclc.oai.server.catalog.AbstractCatalog;
-import ORG.oclc.oai.server.crosswalk.Crosswalk;
-import ORG.oclc.oai.server.crosswalk.CrosswalkItem;
-import ORG.oclc.oai.server.crosswalk.Crosswalks;
+import org.oclc.oai.server.catalog.AbstractCatalog;
+
+import org.oclc.oai.server.crosswalk.Crosswalk;
+import org.oclc.oai.server.crosswalk.CrosswalkItem;
+import org.oclc.oai.server.crosswalk.Crosswalks;
 
 /**
  * This class represents a ListMetadataFormats verb on either
